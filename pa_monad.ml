@@ -499,7 +499,7 @@ let convert
     (a_fail_function: Ast.expr): Ast.expr =
   let rec loop _loc a_perform_body =
     match a_perform_body with
-        <:expr< let $rec:_$ $_$ in $lid:"<--"$ >> ->
+        <:expr< let $rec:_$ $_$ in $lid:"<--"$ >> -> (* x <-- e at the last *)
           Loc.raise _loc
             (Stream.Error "convert: monadic binding cannot be last in a \"perform\" body")
       | <:expr< let $rec:r$ $binding:bs$ in $body$ >> ->
@@ -508,7 +508,7 @@ let convert
       | <:expr< let module $m$ = $mb$ in $body$ >> ->
         let body' = loop _loc body in
           <:expr< let module $m$ = $mb$ in $body'$ >>
-      | <:expr< do { $e$ } >> ->
+      | <:expr< do { $e$ } >> -> (* b1; b2; ... *) 
          let b1, b2, bs =
            match Ast.list_of_expr e [] with
                b1 :: b2 :: bs -> b1, b2, bs
@@ -520,7 +520,7 @@ let convert
                | _  -> <:expr< do { $list:(b2 :: bs)$ } >>)
          and do_merge a_body =
            loop _loc <:expr< do { $list:(a_body :: b2 :: bs)$ } >> in
-             begin
+         begin
                match b1 with
                    (* monadic binding *)
                    <:expr< let $p$ = $e$ in $lid:"<--"$ >> ->
@@ -552,13 +552,16 @@ let convert
                                $a_bind_function$
                                  $patt_as_exp$
                                  (fun $patterns$ -> $do_rest ()$) >>
+                 (* escaped sequence *)
+                 | <:expr< let () = $e$ in $lid:";"$ >> ->
+                     <:expr< do { $e$; $do_rest ()$ } >>
                  | (* map through the regular let *)
                    <:expr< let $rec:r$ $binding:bs$ in $body$ >> ->
-                   <:expr< let $rec:r$ $binding:bs$ in $do_merge body$ >>
+                     <:expr< let $rec:r$ $binding:bs$ in $do_merge body$ >>
                  | <:expr< let module $m$ = $mb$ in $body$ >> ->
-                   <:expr< let module $m$ = $mb$ in $do_merge body$ >>
+                     <:expr< let module $m$ = $mb$ in $do_merge body$ >>
                  | _ -> <:expr< $a_bind_function$ $b1$ (fun _ -> $do_rest ()$) >>
-             end
+         end
       | any_body -> any_body
   in loop _loc a_perform_body
 
@@ -651,6 +654,9 @@ EXTEND Gram
       [ e1 = SELF; "<--"; e2 = expr LEVEL "top" ->
         let p1 = exp_to_patt _loc e1 in
           <:expr< let $p1$ =  $exp:e2$ in $lid:"<--"$ >> ]
+    |
+      [ "\\"; e = expr LEVEL "top" ->
+          <:expr< let () = $exp:e$ in $lid:";"$ >> ]
     ] ;
 
     (* The difference between the expression and patterns is just [_].

@@ -1,0 +1,13 @@
+OCAMLFLAGS += -I +camlp4 -pp camlp4orf 
+OCAMLDEPFLAGS += -I +camlp4 -pp camlp4orf 
+
+.DEFAULT: pa_monad.cmo pa_monad.cmi META
+
+META: META.in
+    make META
+
+install: pa_monad.cmo pa_monad.cmi META
+    make findlib-uninstall findlib-install
+
+clean:
+    rm -f $(filter-proper-targets $(ls R, .))
