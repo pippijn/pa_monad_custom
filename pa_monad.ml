@@ -564,7 +564,7 @@ let convert
                      let rest = do_rest () in
                      let f = 
                        let _loc = Ast.loc_of_expr b1 in
-                       <:expr< (fun () (* was _ *) -> $rest$) >>
+                       <:expr< (fun $lid:"__must_be_unit"$ (* was _ *) -> do { $lid:"__must_be_unit"$; $rest$ }) >>
                      in
                      <:expr< $a_bind_function$ $b1$ $f$ >>
          end
