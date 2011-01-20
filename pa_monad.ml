@@ -560,7 +560,13 @@ let convert
                      <:expr< let $rec:r$ $binding:bs$ in $do_merge body$ >>
                  | <:expr< let module $m$ = $mb$ in $body$ >> ->
                      <:expr< let module $m$ = $mb$ in $do_merge body$ >>
-                 | _ -> <:expr< $a_bind_function$ $b1$ (fun _ -> $do_rest ()$) >>
+                 | _ -> 
+                     let rest = do_rest () in
+                     let f = 
+                       let _loc = Ast.loc_of_expr b1 in
+                       <:expr< (fun () (* was _ *) -> $rest$) >>
+                     in
+                     <:expr< $a_bind_function$ $b1$ $f$ >>
          end
       | any_body -> any_body
   in loop _loc a_perform_body
