@@ -1,3 +1,7 @@
+.PHONY: install clean
+
+BYTE_ENABLED= true
+
 OCAMLFLAGS += -I +camlp4 -pp camlp4orf 
 OCAMLDEPFLAGS += -I +camlp4 -pp camlp4orf 
 

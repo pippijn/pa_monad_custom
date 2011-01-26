@@ -1,1 +1,7 @@
-.*\.cm*$
+.*\.cm[a-z]+$
+.*~$
+\.(sp[io]t|annot|o|cm[a-z]+|orig|omc|lock)$
+\.omakedb$
+.*\.a
+META
+OMakeroot
