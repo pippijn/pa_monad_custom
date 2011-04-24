@@ -7,6 +7,8 @@
 
 BYTE_ENABLED= true
 
+OCamlRequirePackages(findlib)
+
 OCAMLFLAGS += -I +camlp4 -pp camlp4orf 
 OCAMLDEPFLAGS += -I +camlp4 -pp camlp4orf 
 
