@@ -132,7 +132,7 @@ VERSION := $(shell cat VERSION)
 
 
 # Name of the package for findlib
-FINDLIB-NAME := monad
+FINDLIB-NAME := monad-custom
 
 
 # Non Ocaml Tools
