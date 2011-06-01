@@ -13,6 +13,7 @@ XStdFilesAUTHORS: false
 XStdFilesINSTALLFilename: INSTALL
 XStdFilesREADME: false
 BuildType:    Custom (0.2)
+InstallType:    Custom (0.2)
 XCustomBuild: make all META
 XCustomInstall: make findlib-install
 XCustomUninstall: make findlib-uninstall
