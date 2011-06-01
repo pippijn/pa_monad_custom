@@ -20,9 +20,9 @@ META: META.in
 install: pa_monad.cmo pa_monad.cmi META
     make findlib-uninstall findlib-install
 
-$(Installed monad): pa_monad.cmo pa_monad.cmi META
+$(Installed monad-custom): pa_monad.cmo pa_monad.cmi META
     make findlib-uninstall findlib-install
-    CreateInstalled(monad, pa_monad.cmo pa_monad.cmi META)
+    CreateInstalled(monad-custom, pa_monad.cmo pa_monad.cmi META)
 
 clean:
     rm -f $(filter-proper-targets $(ls R, .))
