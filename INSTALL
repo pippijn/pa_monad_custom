@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 0f15bd7e288cbd90039ec606462deed4) *)
+(* DO NOT EDIT (digest: 97386e669acbd055033e28e580cf444f) *)
 This is the INSTALL file for the pa_monad_custom distribution.
 
 This package uses OASIS to generate its build system. See section OASIS for
@@ -11,6 +11,7 @@ Dependencies
 In order to compile this package, you will need:
 * ocaml
 * findlib
+* make
 
 Installing
 ==========
