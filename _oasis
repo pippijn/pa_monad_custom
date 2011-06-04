@@ -1,6 +1,6 @@
 OASISFormat:  0.2
 Name:         pa_monad_custom
-Version:      6.0
+Version:      6.0.0
 Synopsis:     Syntactic Sugar for Monads with small extesions
 Authors:      Jacques Carette, <carette AT mcmaster DOT ca>,
               Lydia E. van Dijk, <lvandijk AT freenet DOT de>,
