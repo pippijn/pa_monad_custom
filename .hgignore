@@ -5,3 +5,5 @@
 .*\.a
 META
 OMakeroot
+setup\.data
+setup\.log
