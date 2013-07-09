@@ -1,6 +1,6 @@
 # How-to-build using OMake
 #
-# yes no | omake --install # to create OMakeroot for the first time
+# cp OMakeroot.in OMakeroot # to create OMakeroot for the first time
 # omake install
 
 .PHONY: install clean
