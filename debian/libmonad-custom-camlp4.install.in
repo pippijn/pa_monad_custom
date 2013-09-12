@@ -1,0 +1,2 @@
+@OCamlStdlibDir@/monad-custom/META
+@OCamlStdlibDir@/monad-custom/*.cma

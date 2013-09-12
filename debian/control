@@ -1,0 +1,31 @@
+Source: monad-custom
+Section: ocaml
+Priority: optional
+Maintainer: Pippijn van Steenhoven <pip88nl@gmail.com>
+Uploaders: 
+  Pippijn van Steenhoven <pip88nl@gmail.com>
+Build-Depends:
+  obuild,
+  ocaml-nox (>= 3.12),
+  ocaml-findlib,
+  camlp4-extra,
+  dh-ocaml,
+  debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: https://github.com/pippijn/re2ml
+Vcs-Git: git://github.com/pippijn/re2ml
+Vcs-Browser: https://github.com/pippijn/re2ml
+
+Package: libmonad-custom-camlp4
+Architecture: any
+Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Provides: ${ocaml:Provides}
+Description: Fast lexer generator compatible with ocamllex
+ Stuff.
+
+Package: libmonad-custom-camlp4-dev
+Architecture: any
+Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Provides: ${ocaml:Provides}
+Description: Fast lexer generator compatible with ocamllex
+ Stuff.
