@@ -1,16 +1,14 @@
-Source: monad-custom
+Source: ocaml-monad-custom
 Section: ocaml
 Priority: optional
 Maintainer: Pippijn van Steenhoven <pip88nl@gmail.com>
-Uploaders: 
-  Pippijn van Steenhoven <pip88nl@gmail.com>
 Build-Depends:
-  obuild,
-  ocaml-nox (>= 3.12),
-  ocaml-findlib,
-  camlp4-extra,
-  dh-ocaml,
-  debhelper (>= 8.0.0)
+ debhelper (>= 8.0.0),
+ obuild,
+ dh-ocaml,
+ ocaml-nox (>= 3.12),
+ ocaml-findlib,
+ camlp4-extra
 Standards-Version: 3.9.2
 Homepage: https://github.com/pippijn/re2ml
 Vcs-Git: git://github.com/pippijn/re2ml
@@ -20,12 +18,20 @@ Package: libmonad-custom-camlp4
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
-Description: Fast lexer generator compatible with ocamllex
- Stuff.
+Description: Monadic syntax extension
+ This Camlp4 parser adds some syntactic sugar to beautify monadic
+ expressions.  The name of the syntax extension is a bit misleading as
+ it does not provide any monad nor monadic computation.  The correct
+ name would have been "pa_perform", but it was discarded because of
+ lack of specificity.
 
 Package: libmonad-custom-camlp4-dev
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
-Description: Fast lexer generator compatible with ocamllex
- Stuff.
+Description: Monadic syntax extension
+ This Camlp4 parser adds some syntactic sugar to beautify monadic
+ expressions.  The name of the syntax extension is a bit misleading as
+ it does not provide any monad nor monadic computation.  The correct
+ name would have been "pa_perform", but it was discarded because of
+ lack of specificity.

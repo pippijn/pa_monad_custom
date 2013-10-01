@@ -1,4 +1,4 @@
-monad-custom (0.1) precise; urgency=low
+ocaml-monad-custom (0.1) precise; urgency=low
 
   * Initial release. (Closes: #9999)
 
